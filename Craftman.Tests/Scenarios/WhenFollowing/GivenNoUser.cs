@@ -10,5 +10,10 @@ namespace Craftman.Tests.Scenarios.WhenFollowing
     [TestFixture]
     public class GivenNoUser
     {
+        [Test]
+        public void ThisShouldFail()
+        {
+            Assert.Fail();
+        }
     }
 }
