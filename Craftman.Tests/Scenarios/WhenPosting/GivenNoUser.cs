@@ -16,7 +16,7 @@ namespace Craftman.Tests.Scenarios.WhenPosting
         }
          
         [Test]
-        public void ItShouldCreateTheUser()
+        public void ItShouldCreateTheUserAndTheMessageToTheTimeline()
         {
             //g
 
