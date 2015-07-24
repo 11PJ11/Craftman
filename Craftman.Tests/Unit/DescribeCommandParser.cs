@@ -1,29 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Craftman.Commands;
 using FluentAssertions;
+using NUnit.Framework;
 
 namespace Craftman.Tests.Unit
 {
     [TestFixture]
     public class DescribeCommandParser
     {
-        private CommandParser _parser = new CommandParser();
+        private readonly CommandParser _parser = new CommandParser();
 
         [Test]
         public void ItShouldCreateAnVoidCommand_GivenNoCommand()
         {
             //g
-            var command = "";
+            const string input = "";
 
             //w
-            var actual = _parser.Parse(command);
+            var actual = _parser.Parse(input);
 
             //t
             actual.Should().BeAssignableTo<VoidCommand>();
+        }
+
+        [Test]
+        public void ItShouldCreateAPostCommand_GivenUserAndMessage()
+        {
+            //g
+            const string input = "Alice -> I love the weather";
+
+            //w
+            var actual = _parser.Parse(input);
+            
+            //t
+            actual.Should().BeAssignableTo<PostCommand>();
+            actual.UserName.Should().Be("Alice");
+            actual.Message.Should().Be("I love the weather");
         }
     }
 }

@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandParser.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\PostCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\VoidCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,30 +9,12 @@ namespace Craftman
 
         static void Main()
         {
-            var command = string.Empty;
+            var userInput = string.Empty;
             while (!_quit)
             {
-                command = Console.ReadLine();
+                userInput = Console.ReadLine();
                 
             }
         }
-    }
-
-    public class CommandParser
-    {
-        public ICommand Parse(string command)
-        {
-            return new VoidCommand();
-        }
-    }
-
-    public interface ICommand
-    {
-        
-    }
-
-    public class VoidCommand : ICommand
-    {
-        
     }
 }
