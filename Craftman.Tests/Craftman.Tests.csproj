@@ -49,10 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenarios\WhenFollowing\GivenNoUser.cs" />
+    <Compile Include="Scenarios\WhenPosting\GivenNoUser.cs" />
+    <Compile Include="Scenarios\Helpers\TheApplication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scenarios\WhenPosting\" />
+    <Folder Include="Scenarios\WhenFollowing\" />
     <Folder Include="Scenarios\WhenReading\" />
   </ItemGroup>
   <ItemGroup>
