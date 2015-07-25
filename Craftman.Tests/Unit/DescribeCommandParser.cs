@@ -10,7 +10,7 @@ namespace Craftman.Tests.Unit
         private readonly CommandParser _parser = new CommandParser();
 
         [Test]
-        public void ItShouldCreateAnVoidCommand_GivenNoCommand()
+        public void ItShouldCreateAVoidCommand_GivenNoCommand()
         {
             //g
             const string input = "";
@@ -35,6 +35,19 @@ namespace Craftman.Tests.Unit
             actual.Should().BeAssignableTo<PostCommand>();
             actual.UserName.Should().Be("Alice");
             actual.Message.Should().Be("I love the weather");
+        }
+
+        [Test]
+        public void ItShouldCreateAQuitCommand_GivenQuitUserInput()
+        {
+            //g
+            const string input = "quit";
+
+            //w
+            var actual = _parser.Parse(input);
+
+            //t
+            actual.Should().BeAssignableTo<QuitCommand>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Craftman.Tests.Scenarios.Helpers;
+﻿using System.Threading.Tasks;
+using Craftman.Tests.Scenarios.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -16,7 +17,7 @@ namespace Craftman.Tests.Scenarios.WhenPosting
         }
          
         [Test]
-        public void ItShouldCreateTheUserAndTheMessageToTheTimeline()
+        public async Task ItShouldCreateTheUserAndTheMessageToTheTimeline()
         {
             //g
 
@@ -25,8 +26,15 @@ namespace Craftman.Tests.Scenarios.WhenPosting
             
             //t
             _theApp.TimelineFor("Alice");
-            var output = _theApp.OutPut;
+            _theApp.Quit();
+            var output = await _theApp.CollectOutPutAsync();
             output.Should().Contain("I Love the weather today");
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _theApp.Dispose();
         }
     }
 }

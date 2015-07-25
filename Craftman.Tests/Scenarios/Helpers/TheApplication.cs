@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Craftman.Tests.Scenarios.Helpers
 {
@@ -26,23 +27,24 @@ namespace Craftman.Tests.Scenarios.Helpers
 
             SendCommand(command);
         }
-        private void SendCommand(string command)
+
+        public void Quit()
         {
-            if (_process == null)
-                return;
-            _process.StandardInput.WriteLine(command);
-            _process.StandardInput.WriteLine("mkdir testDir");
-            _process.StandardInput.WriteLine("echo hello");
+            var command = "quit";
+            SendCommand(command);
         }
 
-        public string OutPut
+        private void SendCommand(string command)
         {
-            get
-            {
-                _process.StandardInput.Close(); 
-                var outputString = _process.StandardOutput.ReadToEnd();
-                return outputString;
-            }
+            _process?.StandardInput.WriteLine(command);
+        }
+
+        public async Task<string> CollectOutPutAsync()
+        {
+            _process.StandardInput.Close();
+
+            var outputString = await _process.StandardOutput.ReadToEndAsync();
+            return outputString;
         }
 
         public void Dispose()

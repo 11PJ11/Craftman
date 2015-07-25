@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Craftman.Commands;
 
 namespace Craftman
 {
     class Program
     {
-        private static bool _quit; 
+        private static ICommand _command; 
 
         static void Main()
         {
             var userInput = string.Empty;
-            while (!_quit)
+            while (_command is QuitCommand)
             {
                 userInput = Console.ReadLine();
                 
