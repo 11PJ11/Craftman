@@ -9,8 +9,9 @@ namespace Craftman
     public class CommandParser
     {
         private const string QuitPattern = @"[Q|q]uit";
-        private const string PostMessagePattern = @"(?<userName>\w+) -> (?<message>.*)";
 
+        private const string PostMessagePattern = @"(?<userName>\b(?![q|Q]uit\b)\w*)\s->\s(?<message>.*)";
+        private const string ReadMessagePattern = @"(?<userName>\b^(?![q|Q]uit\b)\w+$)";
         public ICommand Parse(string input)
         {
             var matchToCommand = _patternToCommand
@@ -50,7 +51,8 @@ namespace Craftman
             new Dictionary<string, Func<Match, ICommand>>
 			{
                 {QuitPattern,CommandFactory.CreateQuitCommand},
-				{PostMessagePattern, CommandFactory.CreatePostCommand}
+				{PostMessagePattern, CommandFactory.CreatePostCommand},
+				{ReadMessagePattern, CommandFactory.CreateReadCommand}
 			};
         
     }
@@ -69,5 +71,10 @@ namespace Craftman
             return new PostCommand(userName, message);
         }
 
+        public static ReadCommand CreateReadCommand(Match readMatch)
+        {
+            var userName = readMatch.Groups["userName"].Value;
+            return new ReadCommand(userName);
+        }
     }
 }

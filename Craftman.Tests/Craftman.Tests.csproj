@@ -55,11 +55,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenarios\WhenPosting\GivenNoUser.cs" />
     <Compile Include="Scenarios\Helpers\TheApplication.cs" />
+    <Compile Include="Scenarios\WhenReading\GivenNoUser.cs" />
     <Compile Include="Unit\DescribeCommandParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scenarios\WhenFollowing\" />
-    <Folder Include="Scenarios\WhenReading\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

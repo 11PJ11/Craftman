@@ -34,7 +34,7 @@ namespace Craftman.Tests.Unit
             //t
             actual.Should().BeAssignableTo<PostCommand>();
             actual.UserName.Should().Be("Alice");
-            actual.Message.Should().Be("I love the weather");
+            ((PostCommand)actual).Message.Should().Be("I love the weather");
         }
 
         [Test]
@@ -48,6 +48,20 @@ namespace Craftman.Tests.Unit
 
             //t
             actual.Should().BeAssignableTo<QuitCommand>();
+        }
+
+        [Test]
+        public void ItShouldCreateAReadCommand_GivenUserName()
+        {
+            //g
+            const string input = "Alice";
+            
+            //w
+            var actual = _parser.Parse(input);
+
+            //t
+            actual.Should().BeAssignableTo<ReadCommand>();
+            actual.UserName.Should().Be("Alice");
         }
     }
 }

@@ -39,11 +39,11 @@ namespace Craftman.Tests.Scenarios.Helpers
             _process?.StandardInput.WriteLine(command);
         }
 
-        public async Task<string> CollectOutPutAsync()
+        public string CollectOutPut()
         {
             _process.StandardInput.Close();
 
-            var outputString = await _process.StandardOutput.ReadToEndAsync();
+            var outputString = _process.StandardOutput.ReadToEnd();
             return outputString;
         }
 

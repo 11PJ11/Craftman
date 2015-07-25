@@ -17,7 +17,7 @@ namespace Craftman.Tests.Scenarios.WhenPosting
         }
          
         [Test]
-        public async Task ItShouldCreateTheUserAndTheMessageToTheTimeline()
+        public void ItShouldCreateTheUserAndTheMessageToTheTimeline()
         {
             //g
 
@@ -27,7 +27,7 @@ namespace Craftman.Tests.Scenarios.WhenPosting
             //t
             _theApp.TimelineFor("Alice");
             _theApp.Quit();
-            var output = await _theApp.CollectOutPutAsync();
+            var output = _theApp.CollectOutPut();
             output.Should().Contain("I Love the weather today");
         }
 

@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Craftman.Commands
 {
     public class PostCommand : ICommand
