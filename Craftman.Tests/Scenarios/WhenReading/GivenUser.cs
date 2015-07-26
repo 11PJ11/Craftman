@@ -29,5 +29,27 @@ namespace Craftman.Tests.Scenarios.WhenReading
             var output = _theApp.CollectOutPut();
             output.Should().Contain("I love the weather today");
         }
+
+        [Test]
+        public void ItShouldShowTheMessagesFromLastToFirst_GiveUserInputSomeMessages()
+        {
+            //g
+            var expected = new[]
+            {
+                "Good game though.",
+                "Damn! We lost!" 
+            };
+
+            _theApp.UserPosts("Bob", "Damn! We lost!");
+            _theApp.UserPosts("Bob", "Good game though.");
+
+            //w
+            _theApp.TimelineFor("Bob");
+
+            //t
+            _theApp.Quit();
+            var output = _theApp.CollectOutPut();
+            CollectionAssert.AreEqual(expected, output);
+        }
     }
 }

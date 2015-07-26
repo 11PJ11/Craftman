@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Craftman.Tests.Scenarios.Helpers
 {
@@ -39,12 +38,12 @@ namespace Craftman.Tests.Scenarios.Helpers
             _process?.StandardInput.WriteLine(command);
         }
 
-        public string CollectOutPut()
+        public string[] CollectOutPut()
         {
             _process.StandardInput.Close();
 
             var outputString = _process.StandardOutput.ReadToEnd();
-            return outputString;
+            return outputString.Split(new[] { "}","\r\n"},StringSplitOptions.RemoveEmptyEntries);
         }
 
         public void Dispose()

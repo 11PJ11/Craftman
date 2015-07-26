@@ -19,6 +19,7 @@ namespace Craftman.Commands
             else
             {
                 var messages = userToMessages[UserName];
+                messages.Reverse();
                 messages.ForEach(Console.WriteLine);
             }
         }
