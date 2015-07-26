@@ -56,6 +56,7 @@
     <Compile Include="Scenarios\WhenPosting\GivenNoUser.cs" />
     <Compile Include="Scenarios\Helpers\TheApplication.cs" />
     <Compile Include="Scenarios\WhenReading\GivenNoUser.cs" />
+    <Compile Include="Scenarios\WhenReading\GivenUser.cs" />
     <Compile Include="Unit\DescribeCommandParser.cs" />
   </ItemGroup>
   <ItemGroup>

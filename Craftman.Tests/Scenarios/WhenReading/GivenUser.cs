@@ -1,8 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Craftman.Tests.Scenarios.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
@@ -10,7 +5,7 @@ using NUnit.Framework;
 namespace Craftman.Tests.Scenarios.WhenReading
 {
     [TestFixture]
-    public class GivenNoUser
+    public class GivenUser
     {
         private TheApplication _theApp;
 
@@ -21,17 +16,18 @@ namespace Craftman.Tests.Scenarios.WhenReading
         }
 
         [Test]
-        public void ItShouldNotifyTheUserIsMissing()
+        public void ItShouldShowTheMessage_GiveUserInputAMessage()
         {
             //g
+            _theApp.UserPosts("Alice","I love the weather today");
 
             //w
             _theApp.TimelineFor("Alice");
 
             //t
             _theApp.Quit();
-            var output =  _theApp.CollectOutPut();
-            output.Should().Contain("No user Alice");
+            var output = _theApp.CollectOutPut();
+            output.Should().Contain("I love the weather today");
         }
     }
 }

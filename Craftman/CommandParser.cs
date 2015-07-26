@@ -9,9 +9,8 @@ namespace Craftman
     public class CommandParser
     {
         private const string QuitPattern = @"[Q|q]uit";
-
-        private const string PostMessagePattern = @"(?<userName>\b(?![q|Q]uit\b)\w*)\s->\s(?<message>.*)";
-        private const string ReadMessagePattern = @"(?<userName>\b^(?![q|Q]uit\b)\w+$)";
+        private static readonly string PostMessagePattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\s->\\s(?<message>.*)";
+        private static readonly string ReadMessagePattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w+$)";
         public ICommand Parse(string input)
         {
             var matchToCommand = _patternToCommand
