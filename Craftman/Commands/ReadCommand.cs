@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Craftman.Commands
 {
     public class ReadCommand : ICommand
@@ -7,5 +10,17 @@ namespace Craftman.Commands
             UserName = useraNme;
         }
         public string UserName { get; }
+        public void ExecuteUsing(Dictionary<string, List<string>> userToMessages)
+        {
+            if (!userToMessages.ContainsKey(UserName))
+            {
+                Console.WriteLine($"No user {UserName}");
+            }
+            else
+            {
+                var messages = userToMessages[UserName];
+                messages.ForEach(Console.WriteLine);
+            }
+        }
     }
 }
