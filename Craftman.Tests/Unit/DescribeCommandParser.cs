@@ -63,5 +63,18 @@ namespace Craftman.Tests.Unit
             actual.Should().BeAssignableTo<ReadCommand>();
             actual.UserName.Should().Be("Alice");
         }
+
+        [Test]
+        public void ItShouldCreateAFollowCommand_GivenTwoUserNames()
+        {
+            //g
+            const string input = "Charlie follows Alice";
+
+            //w
+            var actual = _parser.Parse(input);
+
+            //t
+            actual.Should().BeAssignableTo<FollowCommand>();
+        }
     }
 }

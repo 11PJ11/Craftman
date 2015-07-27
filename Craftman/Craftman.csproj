@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CommandFactory.cs" />
     <Compile Include="CommandParser.cs" />
+    <Compile Include="Commands\FollowCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Commands\PostCommand.cs" />

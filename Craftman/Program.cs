@@ -9,18 +9,20 @@ namespace Craftman
         private static ICommand _command;
         private static CommandParser _parser;
         private static List<Message> _messages;
+        private static Dictionary<string, List<string>> _userToFollowed; 
          
         public static void Main()
 
         {
             _messages = new List<Message>();
+            _userToFollowed = new Dictionary<string, List<string>>();
             _parser = new CommandParser();
 
             while (ShouldNotQuit())
             {
                 var userInput = Console.ReadLine();
                 _command = _parser.Parse(userInput);
-                _command.ExecuteUsing(_messages);
+                _command.ExecuteUsing(_messages, _userToFollowed);
             }
         }
 

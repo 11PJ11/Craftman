@@ -22,5 +22,12 @@ namespace Craftman
             var userName = readMatch.Groups["userName"].Value;
             return new ReadCommand(userName);
         }
+
+        public static ICommand CreateFollowCommnad(Match followMatch)
+        {
+            var userName = followMatch.Groups["userName"].Value;
+            var followed = followMatch.Groups["followed"].Value;
+            return new FollowCommand(userName, followed);
+        }
     }
 }

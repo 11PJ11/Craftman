@@ -11,7 +11,7 @@ namespace Craftman.Commands
             UserName = useraNme;
         }
         public string UserName { get; }
-        public void ExecuteUsing(List<Message> messages)
+        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
         {
             messages = messages
                 .Where(m => m.UserName == UserName)
@@ -22,7 +22,6 @@ namespace Craftman.Commands
                 messages.ForEach(Console.WriteLine);
             else
                 Console.WriteLine($"No user {UserName}");
-            
         }
     }
 }

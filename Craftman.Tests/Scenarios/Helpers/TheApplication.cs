@@ -58,5 +58,17 @@ namespace Craftman.Tests.Scenarios.Helpers
             var command = $"{user}";
             SendCommand(command);
         }
+
+        public void UserFollowsUser(string follower, string followed)
+        {
+            var command = $"{follower} follows {followed}";
+            SendCommand(command);
+        }
+
+        public void UserWall(string user)
+        {
+            var command = $"{user} wall";
+            SendCommand(command);
+        }
     }
 }

@@ -53,16 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenarios\WhenFollowing\GivenOneUserOnly.cs" />
     <Compile Include="Scenarios\WhenPosting\GivenNoUser.cs" />
     <Compile Include="Scenarios\Helpers\TheApplication.cs" />
     <Compile Include="Scenarios\WhenReading\GivenNoUser.cs" />
     <Compile Include="Scenarios\WhenReading\GivenUser.cs" />
     <Compile Include="Unit\DescribeCommandParser.cs" />
+    <Compile Include="Unit\DescribeFollowCommnad.cs" />
+    <Compile Include="Unit\DescribeMessage.cs" />
     <Compile Include="Unit\DescribePostCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scenarios\WhenFollowing\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
