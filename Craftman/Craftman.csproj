@@ -45,6 +45,7 @@
     <Compile Include="CommandParser.cs" />
     <Compile Include="Commands\FollowCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\WallCommand.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Commands\PostCommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />

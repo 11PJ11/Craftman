@@ -11,7 +11,9 @@ namespace Craftman
         private const string QuitPattern = @"[Q|q]uit";
         private static readonly string PostMessagePattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\s->\\s(?<message>.*)";
         private static readonly string FollowsPattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\sfollows\\s(?<followed>.*)";
-        private static readonly string ReadMessagePattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w+$)";
+        private static readonly string ReadPattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w+$)";
+        private static readonly string WallPattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w*\\swall$)";
+
         public ICommand Parse(string input)
         {
             var matchToCommand = _patternToCommand
@@ -53,7 +55,8 @@ namespace Craftman
                 {QuitPattern,CommandFactory.CreateQuitCommand},
 				{PostMessagePattern, CommandFactory.CreatePostCommand},
 				{FollowsPattern, CommandFactory.CreateFollowCommnad},
-				{ReadMessagePattern, CommandFactory.CreateReadCommand}
+				{ReadPattern, CommandFactory.CreateReadCommand},
+				{WallPattern, CommandFactory.CreateWallCommand}
 			};
         
     }

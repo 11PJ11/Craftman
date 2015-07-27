@@ -23,7 +23,7 @@ namespace Craftman.Tests.Unit
         }
 
         [Test]
-        public void ItShouldCreateAPostCommand_GivenUserAndMessage()
+        public void ItShouldCreateAPostCommand_GivenUserNameAndMessage()
         {
             //g
             const string input = "Alice -> I love the weather";
@@ -75,6 +75,19 @@ namespace Craftman.Tests.Unit
 
             //t
             actual.Should().BeAssignableTo<FollowCommand>();
+        }
+
+        [Test]
+        public void ItShouldCreateAWallCommand_GivenAUserNames()
+        {
+            //g
+            const string input = "Charlie wall";
+
+            //w
+            var actual = _parser.Parse(input);
+
+            //t
+            actual.Should().BeAssignableTo<WallCommand>();
         }
     }
 }

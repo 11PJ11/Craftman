@@ -13,15 +13,21 @@ namespace Craftman.Commands
         public string UserName { get; }
         public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
         {
-            messages = messages
+            var timeline = GetTheUserTimeline(messages);
+            
+            timeline.ForEach(Console.WriteLine);
+        }
+
+        public List<string> GetTheUserTimeline(List<Message> messages)
+        {
+            var timeline = messages
                 .Where(m => m.UserName == UserName)
+                .Select(m => m.ToString())
+                .DefaultIfEmpty($"No user {UserName}")
                 .Reverse()
                 .ToList();
-            
-            if(messages.Any())
-                messages.ForEach(Console.WriteLine);
-            else
-                Console.WriteLine($"No user {UserName}");
+
+            return timeline;
         }
     }
 }

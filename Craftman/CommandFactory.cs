@@ -29,5 +29,11 @@ namespace Craftman
             var followed = followMatch.Groups["followed"].Value;
             return new FollowCommand(userName, followed);
         }
+
+        public static ICommand CreateWallCommand(Match wallMatch)
+        {
+            var userName = wallMatch.Groups["userName"].Value;
+            return new WallCommand(userName);
+        }
     }
 }
