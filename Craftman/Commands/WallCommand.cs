@@ -21,8 +21,13 @@ namespace Craftman.Commands
         internal List<string> GetTheWallUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
         {
             var wall = messages
-                .Where(m => m.UserName == UserName)
-                .Select(m => m.ToString())
+                .Where(message => 
+                    message.UserName == UserName ||
+                    (userToFollowed.ContainsKey(UserName) &&
+                     userToFollowed[UserName].Contains(message.UserName))
+                    )
+                .OrderByDescending(m => m.TimeStamp)
+                .Select(m => $"{m.UserName} - {m.ToString()}")
                 .DefaultIfEmpty($"No user {UserName}")
                 .ToList();
 

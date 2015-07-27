@@ -28,7 +28,7 @@ namespace Craftman.Tests.Scenarios.WhenFollowing
             _theApp.UserWall("Charlie");
             _theApp.Quit();
             var output = _theApp.CollectOutPut();
-            output.Should().Contain("I’m in New York today! Anyone want to have a coffee? (1 second ago)");
+            output.Should().Contain("Charlie - I’m in New York today! Anyone want to have a coffee? (1 second ago)");
         }
     }
 }

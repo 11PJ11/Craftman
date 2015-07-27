@@ -60,7 +60,7 @@
     <Compile Include="Scenarios\Helpers\TheApplication.cs" />
     <Compile Include="Scenarios\WhenReading\GivenNoUser.cs" />
     <Compile Include="Scenarios\WhenReading\GivenUser.cs" />
-    <Compile Include="Unit\DecribeWallCommand.cs" />
+    <Compile Include="Unit\DescribeWallCommand.cs" />
     <Compile Include="Unit\DescribeCommandParser.cs" />
     <Compile Include="Unit\DescribeFollowCommnad.cs" />
     <Compile Include="Unit\DescribeMessage.cs" />

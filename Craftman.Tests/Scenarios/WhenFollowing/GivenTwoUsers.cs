@@ -23,8 +23,8 @@ namespace Craftman.Tests.Scenarios.WhenFollowing
             _theApp.UserPosts("Charlie", "I’m in New York today! Anyone want to have a coffee?");
             var expected = new List<string>
             {
-                "I’m in New York today! Anyone want to have a coffee? (1 second ago)",
-                "I love the weather today (1 second ago)"
+                "Charlie - I’m in New York today! Anyone want to have a coffee? (1 second ago)",
+                "Alice - I love the weather today (1 second ago)"
             };
             //w
             _theApp.UserFollowsUser("Charlie", "Alice");
