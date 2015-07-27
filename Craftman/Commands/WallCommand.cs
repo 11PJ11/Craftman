@@ -22,16 +22,25 @@ namespace Craftman.Commands
         {
             var wall = messages
                 .Where(message => 
-                    message.UserName == UserName ||
-                    (userToFollowed.ContainsKey(UserName) &&
-                     userToFollowed[UserName].Contains(message.UserName))
-                    )
+                    MessageBelongsToUser(message) ||
+                    MessageBelongsToFollowedByUser(message, userToFollowed))
                 .OrderByDescending(m => m.TimeStamp)
                 .Select(m => $"{m.UserName} - {m.ToString()}")
                 .DefaultIfEmpty($"No user {UserName}")
                 .ToList();
 
             return wall;
+        }
+
+        private bool MessageBelongsToFollowedByUser(Message message, Dictionary<string, List<string>> userToFollowed)
+        {
+            return (userToFollowed.ContainsKey(UserName) &&
+                    userToFollowed[UserName].Contains(message.UserName));
+        }
+
+        private bool MessageBelongsToUser(Message message)
+        {
+            return message.UserName == UserName;
         }
     }
 }
