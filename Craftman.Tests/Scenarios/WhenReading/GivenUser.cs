@@ -27,7 +27,7 @@ namespace Craftman.Tests.Scenarios.WhenReading
             //t
             _theApp.Quit();
             var output = _theApp.CollectOutPut();
-            output.Should().Contain("I love the weather today");
+            output.Should().Contain("I love the weather today (1 second ago)");
         }
 
         [Test]
@@ -36,8 +36,8 @@ namespace Craftman.Tests.Scenarios.WhenReading
             //g
             var expected = new[]
             {
-                "Good game though.",
-                "Damn! We lost!" 
+                "Good game though. (1 second ago)",
+                "Damn! We lost! (1 second ago)"
             };
 
             _theApp.UserPosts("Bob", "Damn! We lost!");

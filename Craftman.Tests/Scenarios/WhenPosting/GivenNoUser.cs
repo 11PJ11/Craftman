@@ -28,7 +28,7 @@ namespace Craftman.Tests.Scenarios.WhenPosting
             _theApp.TimelineFor("Alice");
             _theApp.Quit();
             var output = _theApp.CollectOutPut();
-            output.Should().Contain("I Love the weather today");
+            output.Should().Contain("I Love the weather today (1 second ago)");
         }
 
         [TearDown]

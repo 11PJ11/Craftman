@@ -8,19 +8,19 @@ namespace Craftman
     {
         private static ICommand _command;
         private static CommandParser _parser;
-        private static Dictionary<string, List<string>> _userToMessages;
+        private static List<Message> _messages;
          
         public static void Main()
 
         {
-            _userToMessages = new Dictionary<string, List<string>>();
+            _messages = new List<Message>();
             _parser = new CommandParser();
 
             while (ShouldNotQuit())
             {
                 var userInput = Console.ReadLine();
                 _command = _parser.Parse(userInput);
-                _command.ExecuteUsing(_userToMessages);
+                _command.ExecuteUsing(_messages);
             }
         }
 

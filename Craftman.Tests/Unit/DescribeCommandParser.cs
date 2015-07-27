@@ -34,7 +34,7 @@ namespace Craftman.Tests.Unit
             //t
             actual.Should().BeAssignableTo<PostCommand>();
             actual.UserName.Should().Be("Alice");
-            ((PostCommand)actual).Message.Should().Be("I love the weather");
+            ((PostCommand)actual).Text.Should().Be("I love the weather");
         }
 
         [Test]

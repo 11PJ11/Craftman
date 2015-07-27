@@ -1,27 +1,25 @@
+using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Craftman.Commands
 {
     public class PostCommand : ICommand
     {
-        public PostCommand(string userName, string message)
+        public PostCommand(
+            string userName, string text, DateTime timeStamp = default(DateTime))
         {
+            TimeStamp = timeStamp == default (DateTime) ? DateTime.Now : timeStamp;
             UserName = userName;
-            Message = message;
+            Text = text;
         }
 
-        public string UserName { get; }
+        public string UserName {get;}
+        public string Text { get; }
+        public DateTime TimeStamp { get; }
 
-        public void ExecuteUsing(Dictionary<string, List<string>> userToMessages)
+        public void ExecuteUsing(List<Message> messages)
         {
-            if (!userToMessages.ContainsKey(UserName))
-            {
-                userToMessages.Add(UserName, new List<string>());
-            }
-            userToMessages[UserName].Add(Message);
+            messages.Add(new Message(UserName, Text, TimeStamp));
         }
-
-        public string Message { get; }
     }
 }

@@ -43,7 +43,9 @@ namespace Craftman.Tests.Scenarios.Helpers
             _process.StandardInput.Close();
 
             var outputString = _process.StandardOutput.ReadToEnd();
-            return outputString.Split(new[] { "}","\r\n"},StringSplitOptions.RemoveEmptyEntries);
+            return outputString
+                .Replace("}",string.Empty)
+                .Split(new[] {"\r\n"},StringSplitOptions.RemoveEmptyEntries);
         }
 
         public void Dispose()

@@ -10,7 +10,7 @@ namespace Craftman.Commands
         }
 
         public string UserName { get; }
-        public void ExecuteUsing(Dictionary<string, List<string>> userToMessages)
+        public void ExecuteUsing(List<Message> messages)
         {
             
         }

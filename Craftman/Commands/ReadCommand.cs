@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Craftman.Commands
 {
@@ -10,18 +11,18 @@ namespace Craftman.Commands
             UserName = useraNme;
         }
         public string UserName { get; }
-        public void ExecuteUsing(Dictionary<string, List<string>> userToMessages)
+        public void ExecuteUsing(List<Message> messages)
         {
-            if (!userToMessages.ContainsKey(UserName))
-            {
-                Console.WriteLine($"No user {UserName}");
-            }
-            else
-            {
-                var messages = userToMessages[UserName];
-                messages.Reverse();
+            messages = messages
+                .Where(m => m.UserName == UserName)
+                .Reverse()
+                .ToList();
+            
+            if(messages.Any())
                 messages.ForEach(Console.WriteLine);
-            }
+            else
+                Console.WriteLine($"No user {UserName}");
+            
         }
     }
 }
