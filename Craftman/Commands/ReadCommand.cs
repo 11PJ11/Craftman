@@ -11,7 +11,7 @@ namespace Craftman.Commands
             UserName = useraNme;
         }
         public string UserName { get; }
-        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
+        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userNameToFollowed)
         {
             var timeline = GetTheUserTimeline(messages);
             

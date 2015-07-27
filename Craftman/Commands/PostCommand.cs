@@ -17,7 +17,7 @@ namespace Craftman.Commands
         public string Text { get; }
         public DateTime TimeStamp { get; }
 
-        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
+        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userNameToFollowed)
         {
             messages.Add(new Message(UserName, Text, TimeStamp));
         }

@@ -12,9 +12,9 @@ namespace Craftman.Commands
         }
 
         public string UserName { get; }
-        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
+        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userNameToFollowed)
         {
-            var wall = GetTheWallUsing(messages, userToFollowed);
+            var wall = GetTheWallUsing(messages, userNameToFollowed);
             wall.ForEach(Console.WriteLine);
         }
 

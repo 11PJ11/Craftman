@@ -13,12 +13,12 @@ namespace Craftman.Commands
         public string UserName { get; }
         public string Followed { get; }
 
-        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
+        public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userNameToFollowed)
         {
-            if (userToFollowed.ContainsKey(UserName))
-                userToFollowed[UserName].Add(Followed);
+            if (userNameToFollowed.ContainsKey(UserName))
+                userNameToFollowed[UserName].Add(Followed);
             else
-                userToFollowed.Add(UserName, new List<string> {Followed});
+                userNameToFollowed.Add(UserName, new List<string> {Followed});
         }
     }
 }
