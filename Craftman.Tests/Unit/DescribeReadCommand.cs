@@ -9,6 +9,26 @@ namespace Craftman.Tests.Unit
     public class DescribeReadCommand
     {
         [Test]
+        public void ItShouldShowAnErrorMessage_GivenTheUserIsMissing()
+        {
+            //g
+            var userName = "Alice";
+            var command = new ReadCommand(userName);
+            var expected = new List<string>
+            {
+                "No user Alice"
+            };
+
+            //w
+            var charliesMessage = new Message("Charlie", "Hello!", DateTime.Now);
+            var messages = new List<Message> {charliesMessage};
+            var actual = command.GetTheUserTimeline(messages);
+
+            //t
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void ItShouldShowTheUserMessages()
         {
             //g

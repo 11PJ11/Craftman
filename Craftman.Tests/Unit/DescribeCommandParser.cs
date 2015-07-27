@@ -75,6 +75,8 @@ namespace Craftman.Tests.Unit
 
             //t
             actual.Should().BeAssignableTo<FollowCommand>();
+            actual.UserName.Should().Be("Charlie");
+            ((FollowCommand) actual).Followed.Should().Be("Alice");
         }
 
         [Test]
@@ -88,6 +90,7 @@ namespace Craftman.Tests.Unit
 
             //t
             actual.Should().BeAssignableTo<WallCommand>();
+            actual.UserName.Should().Be("Charlie");
         }
     }
 }

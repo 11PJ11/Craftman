@@ -12,7 +12,7 @@ namespace Craftman
         private static readonly string PostMessagePattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\s->\\s(?<message>.*)";
         private static readonly string FollowsPattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\sfollows\\s(?<followed>.*)";
         private static readonly string ReadPattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w+$)";
-        private static readonly string WallPattern = $"(?<userName>\\b^(?!{QuitPattern}\\b)\\w*\\swall$)";
+        private static readonly string WallPattern = $"(?<userName>\\b(?!{QuitPattern}\\b)\\w*)\\swall$";
 
         public ICommand Parse(string input)
         {

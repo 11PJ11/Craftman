@@ -9,6 +9,27 @@ namespace Craftman.Tests.Unit
     public class DecribeWallCommand
     {
         [Test]
+        public void ItShouldShowAnErrorMessage_GivenTheUserIsMissing()
+        {
+            //g
+            var userName = "Alice";
+            var message = new Message("Charlie", "Hello!", DateTime.Now);
+            var messages = new List<Message> { message };
+            var userToFollowed = new Dictionary<string, List<string>>();
+            var command = new WallCommand(userName);
+            var expected = new List<string>
+            {
+                "No user Alice"
+            };
+
+            //w
+            var actual = command.GetTheWallUsing(messages, userToFollowed);
+
+            //t
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void ItShouldShowTheUserMessages_GivenNotFollowingOtherUsers()
         {
             //g

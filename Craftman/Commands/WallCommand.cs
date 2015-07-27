@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,7 +14,8 @@ namespace Craftman.Commands
         public string UserName { get; }
         public void ExecuteUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
         {
-            throw new System.NotImplementedException();
+            var wall = GetTheWallUsing(messages, userToFollowed);
+            wall.ForEach(Console.WriteLine);
         }
 
         internal List<string> GetTheWallUsing(List<Message> messages, Dictionary<string, List<string>> userToFollowed)
@@ -21,6 +23,7 @@ namespace Craftman.Commands
             var wall = messages
                 .Where(m => m.UserName == UserName)
                 .Select(m => m.ToString())
+                .DefaultIfEmpty($"No user {UserName}")
                 .ToList();
 
             return wall;

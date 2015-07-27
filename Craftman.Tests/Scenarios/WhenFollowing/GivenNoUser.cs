@@ -1,8 +1,8 @@
-﻿using Craftman.Tests.Scenarios.Helpers;
+using Craftman.Tests.Scenarios.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Craftman.Tests.Scenarios.WhenReading
+namespace Craftman.Tests.Scenarios.WhenFollowing
 {
     [TestFixture]
     public class GivenNoUser
@@ -21,11 +21,11 @@ namespace Craftman.Tests.Scenarios.WhenReading
             //g
 
             //w
-            _theApp.TimelineFor("Alice");
+            _theApp.UserWall("Alice");
 
             //t
             _theApp.Quit();
-            var output =  _theApp.CollectOutPut();
+            var output = _theApp.CollectOutPut();
             output.Should().Contain("No user Alice");
         }
     }
